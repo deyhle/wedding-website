@@ -1,0 +1,24 @@
+title: Hochzeit CHANGEME
+datamanagerURL: https://datamanager.entrecode.de/api/CHANGEME
+datamanagerRootURL: https://datamanager.entrecode.de
+publicURL: http://localhost:3003/
+fakeEmailDomain: CHANGEME
+shortID: CHANGEME
+dataManagerID: CHANGEME
+accessToken: CHANGEME
+spotify: 
+  user: CHANGEME # access code, NOT your spotify username!
+  password: CHANGEME # access secret, NOT your spotify password!
+  settingsEntryID: CHANGEME
+  playlistURL: https://api.spotify.com/v1/users/CHANGEME/playlists/CHANGEME/tracks
+useSDK: true
+locale: de                # for date/time formatting
+timezone: Europe/Berlin   # for date/time formatting
+analyticsID: 
+clientID: local-development
+apiKey: 
+dynamicTemplates: {}
+disableTemplateCache : false
+memoryCacheTtl: 3600 # in seconds => 1 hour
+dmCache: true
+disableCrawling: false

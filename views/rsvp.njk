@@ -1,0 +1,95 @@
+{% extends 'base-layout.njk' %}
+
+{% block customscript %}
+  <script>
+    window.guests = {{ guests | json }};
+  </script>
+{% endblock %}
+
+{% block main %}
+  <div data-grid="is-center">
+    <div data-col="8-sm 6-xl">
+      <h1 class="is-mega">Rückmeldung</h1>
+      <p>Gebt uns bitte bis zum DATUM Bescheid, ob ihr kommen könnt. Falls ihr übernachten wollt, 
+      übernehmt die Reservierung bitte selbst. Alle Infos findet ihr
+        im Menüpunkt <a href="/location">Location</a>.</p>
+      <p>Gerne kannst du uns Rückmeldung über das folgende Formular geben:</p>
+
+      <div class="bumper"></div>
+
+      {% if error %}
+        <div class="alert alert_error">Fehler beim Speichern, bitte nochmal probieren!</div>
+      {% endif %}
+
+      {% raw %}
+        <rsvp-component inline-template>
+          <div><!-- empty div necessary for vue! -->
+          <p>Du kannst {{ guestsJSON.length }} Person<span v-if="guestsJSON.length > 1">en</span> anmelden
+          und die Angaben auch jederzeit ändern. Sie werden automatisch gespeichert.</p>
+            <div v-for="(item, index) in guestsJSON" class="has-margin-middle has-padding is-theme_dark">
+              <h2 class="is-kilo has-margin-bottom-big">{{ item.name }}</h2>
+              <div data-grid="">
+                <div data-col="6-sm">
+                  <div class="xui-radio">
+                    <input v-model.number="item.answer" :id="'rsvp-' + index + '-answer-yes'"
+                           value="1" type="radio" @change="saved=false">
+                    <label :for="'rsvp-' + index + '-answer-yes'">Ich komme!</label>
+                  </div>
+                  <div class="spacer-small is-hidden-from-md"></div>
+                </div>
+                <div data-col="6-sm">
+                  <div class="xui-radio">
+                    <input v-model.number="item.answer" :id="'rsvp-' + index + '-answer-no'"
+                           value="-1" type="radio" @change="saved=false">
+                    <label :for="'rsvp-' + index + '-answer-no'">kann leider nicht kommen</label>
+                  </div>
+                  <div class="spacer-small is-hidden-from-md"></div>
+                </div>
+              </div>
+              <div class="spacer"></div>
+              <div class="">
+                <input v-model="item.overnight" :id="'rsvp-' + index + '-overnight'"
+                       type="checkbox"
+                       :disabled="!(item.answer === 1)" @change="saved=false">
+                <label :for="'rsvp-' + index + '-overnight'">
+                  mit Übernachtung
+                </label>
+              </div>
+              <div class="alert alert_small alert_minor has-margin-top" v-if="item.overnight">
+              Dies ist nur eine Info für uns.
+                Bitte <a href="/location" class="is-bold">buchen</a> nicht vergessen!
+              </div>
+              <div class="spacer"></div>
+              <div class="form-group">
+                <label :for="'rsvp-' + index + '-preferences'">Hier kannst du uns noch etwas
+                  mitteilen:</label>
+                <input v-model="item.preferences" :id="'rsvp-' + index + '-preferences'"
+                       class="input" placeholder="Deine Nachricht…" @input="saved=false">
+              </div>
+              <div class="form-group">
+                <label :for="'rsvp-' + index + '-email'">Du kannst deine E-Mail-Adresse eingeben, um
+                  Updates und später alle Bilder von uns zu bekommen:</label>
+                <input v-model="item.email" :id="'rsvp-' + index + '-email'" class="input"
+                       type="email" placeholder="E-Mail-Adresse" @input="saved=false">
+              </div>
+            </div>
+
+            <ul class="is-inline">
+              <li>
+                <a v-if="!saving" v-on:click="saveAll" class="btn">Speichern</a>
+                <a v-if="saving" disabled class="btn">Speichern</a>
+              </li>
+              <li class="is-ink-lighter is-light has-padding has-padding-top-small">
+                <span v-if="(!saved && !saving)">Ungesicherte Änderungen&nbsp;&nbsp;</span>
+                <span v-if="saving">wird gespeichert...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span v-if="saved">Alle Angaben gespeichert!</span>
+              </li>
+            </ul>
+          </div>
+        </rsvp-component>
+      {% endraw %}
+      <div class="spacer"></div>
+      <p>Gerne darfst du uns noch etwas auf die <a href="/musik">Party-Playlist</a> setzen!</p>
+    </div>
+  </div>
+{% endblock %}

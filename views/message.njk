@@ -1,0 +1,16 @@
+{% extends 'base-layout.njk' %}
+
+{% block header_nav %}
+{% endblock %}
+
+{% block main %}
+{% if message %}
+<div class="alert alert_highlight">{{message}}</div>
+{% endif %}
+{% if error %}
+<div class="alert alert_error">{{error.message}}</div>
+{% endif %}
+
+
+
+{% endblock %}

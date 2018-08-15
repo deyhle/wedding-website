@@ -1,0 +1,66 @@
+.page-aside {
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: getBreakpoint(md, max)) {
+  .page-aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 80%;
+    max-width: rem(320);
+    box-shadow: 0 4px 16px rgba(black, .1);
+    z-index: 9;
+    background-color: getColor(background);
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: all .4s;
+    opacity: 0;
+    padding: rem(120) rem(16) rem(32) rem(16);
+    background-image: url('./images/leavesL.svg');
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 240px auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    &.is-active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+@media (min-width: getBreakpoint(lg)) {
+  .hamburger-btn {
+    display: none;
+  }
+
+  .page-aside {
+    margin-bottom: rem(32);
+
+    .nav {
+      .nav__items {
+        justify-content: center;
+        flex-direction: row !important;
+
+        .nav__item {
+          &:first-child {
+            order: 1;
+          }
+        }
+
+        .spacer {
+          display: none;
+        }
+      }
+    }
+  }
+}

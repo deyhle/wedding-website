@@ -1,0 +1,16 @@
+{% extends 'base-layout.njk' %}
+
+{% block main %}
+
+{% if expiration %}
+<pre>{{ expiration }}</pre>
+{% else %}
+<form method="get" action="https://accounts.spotify.com/authorize/">
+<input type="hidden" name="client_id" value="CLIENTID_HIER_EINGEBEN">
+<input type="hidden" name="response_type" value="code">
+<input type="hidden" name="redirect_uri" value="{{redirect_uri}}">
+<input type="hidden" name="scope" value="playlist-read-private playlist-modify-private playlist-modify-public">
+<input type="submit" class="btn">
+</form>
+{% endif %}
+{% endblock %}

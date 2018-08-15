@@ -1,0 +1,39 @@
+
+.img {
+  &_inline-left {
+    width: 100%;
+    height: auto;
+    padding-top: rem(16);
+    padding-bottom: rem(16);
+
+    @media (min-width: getBreakpoint(md)) {
+      float: left;
+      max-width: 50%;
+      width: auto;
+      margin-right: rem(24);
+      padding-top: rem(8);
+      padding-bottom: rem(8);
+    }
+
+    @media (min-width: getBreakpoint(lg)) {
+      margin-left: rem(-48);
+      margin-right: rem(32);
+    }
+  }
+
+  &_left {
+    float: left;
+    padding-right: rem(16);
+  }
+
+  &_center {
+    float: unset;
+    padding-right: rem(16);
+    padding-left: rem(16);
+  }
+
+  &_right {
+    float: right;
+    padding-left: rem(16);
+  }
+}

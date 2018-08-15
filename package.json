@@ -1,0 +1,54 @@
+{
+  "name": "hochzeit.dynamic-website",
+  "version": "0.1.0",
+  "description": "wedding website",
+  "main": "router.js",
+  "scripts": {
+    "start": "node router.js",
+    "dev": "npm run start & npm run watch",
+    "test": "NODE_ENV=testing mocha -R spec",
+    "build": "NODE_ENV=production webpack",
+    "watch": "NODE_ENV=development webpack --watch",
+    "sass": "node-sass --watch --recursive --source-map-embed --output-style compressed style/style.scss static/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:deyhle/wedding-website.git"
+  },
+  "author": "Ruben Deyhle <deyhle@entrecode.de>",
+  "private": true,
+  "dependencies": {
+    "ec.sdk": "^0.13.9",
+    "js-yaml": "^3.10.0",
+    "jsonwebtoken": "^8.1.0",
+    "superagent": "^3.8.2",
+    "visual-cms.website": "^0.6.2",
+    "vue": "^2.5.16",
+    "vue-cookies": "^1.5.4",
+    "vue-loader": "^14.2.2",
+    "vue-resource": "^1.3.5",
+    "vue-template-compiler": "^2.5.16",
+    "vue2-typeahead": "^1.0.30"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "css-loader": "^0.28.8",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^1.1.11",
+    "html-validator": "^2.2.3",
+    "mocha": "^4.1.0",
+    "mocha-bamboo-reporter": "^1.1.1",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "supertest": "^3.0.0",
+    "webpack": "^3.10.0",
+    "webpack-chunk-hash": "^0.5.0",
+    "webpack-manifest-plugin": "^1.3.2",
+    "x.ui": "^8.0.0-beta.5"
+  }
+}

@@ -1,0 +1,69 @@
+@import '_config';
+@import '~x.ui/src/x.ui.scss';
+@import 'atoms/atoms';
+@import 'molecules/molecules';
+@import 'organisms/organisms';
+
+pre {
+  font-family: monospace;
+}
+
+.hochzeit_codeinput:not(:placeholder-shown) {
+  text-transform: uppercase;
+}
+
+.hochzeit_title {
+  font-family: 'scriblle_script_stdregular';
+}
+
+body {
+  background-image: url('./images/leavesL.svg'), url('./images/leavesR.svg');
+  background-position: left top, right top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 240px auto;
+}
+
+.avatar_big {
+  width: 5rem;
+  height: 5rem;
+}
+
+.hamburger-btn {
+  background-color: getColor(background);
+  border-radius: 50%;
+}
+
+#logo {
+  fill: getColor(text);
+  height: rem(80);
+  width: auto;
+  margin: rem(32);
+}
+
+body.intro {
+  background-image: url('/cover.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: rgba(getColor(background, invert), .6);
+  color: getColor(text, invert);
+  background-blend-mode: multiply;
+
+  .input {
+    color: getColor(text);
+  }
+
+  a {
+    color: getColor(super);
+  }
+
+  #logo {
+    fill: getColor(highlight);
+  }
+}
+
+.nav {
+  background-color: rgba(getColor(background), .6);
+}

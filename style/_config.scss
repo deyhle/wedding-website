@@ -1,0 +1,42 @@
+/// @font-face
+/// use @import to use custom font-families
+
+@font-face {
+  font-family: 'scriblle_script_stdregular'; // maybe google web font "Meddon" instead?
+  src: url('/font/scriblle_script-webfont.woff2') format('woff2'),
+       url('/font/scriblle_script-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:500,800');
+
+$body-font: 'Raleway' sans-serif;
+$headings-font: 'Raleway' sans-serif;
+
+%link-styles { 
+  font-weight: bold; 
+}
+
+$is-light: 500;
+$is-normal: 500;
+$is-bold: 800;
+
+//$background: #EAE1CB;
+$background: #ffffff;
+$text: #2A302B;
+$link: #611c4a;
+$super: #beb06f;
+$minor: rgba($text, .06);
+$highlight: #F3E7D9;
+
+$giga-margin: 8;
+$mega-margin: 8;
+$kilo-margin: 8;
+$vertical-rhythm: 8;
+
+$btn-round: true;
+$btn-outline: 1;
+$input-round: true;
+
+$headings-line-height: 1.2;

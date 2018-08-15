@@ -1,0 +1,29 @@
+{% extends 'base-layout.njk' %}
+
+{% block main %}
+  <div data-grid="is-center">
+    <div data-col="8-sm 6-xl">
+      <h1>Musik&shy;wunsch&shy;liste</h1>
+      <p class="lead">Eine Party lebt von der Musik! Teilt uns gerne jetzt schon mit, welche Songs
+        auf unserer Hochzeit auf gar keinen Fall fehlen dürfen.</p>
+      <p>Natürlich sehen wir, wer welche Titel auf die Playlist gesetzt hat und werden diese auch
+        nochmal kuratieren&nbsp;😉</p>
+      <div class="bumper"></div>
+      {% raw %}
+        <spotify inline-template>
+          <div>
+            <TypeAhead
+                src="/music-search?q=:keyword"
+                :get-response="getResponse"
+                :limit="0"
+                :show-searching-flag="true"
+                :highlighting="highlighting"
+                :add-to-playlist="addToPlaylist"
+                :get-playlist="getPlaylist"
+            ></TypeAhead>
+          </div>
+        </spotify>
+      {% endraw %}
+    </div>
+  </div>
+{% endblock %}

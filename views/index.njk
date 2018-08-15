@@ -1,0 +1,88 @@
+{% extends 'base-layout.njk' %}
+{% block bodyClass %}intro{% endblock %}
+{% block main %}
+  <div data-grid="is-center">
+    {% if not loggedIn %}
+      <div data-col="10-sm 6-xl">
+        <div>
+          <h2 class="align-center">Code eingeben</h2>
+          <div class="form-group">
+            <form action="/code" method="post">
+              {% if error === 'wrong_code' %}
+                <div class="alert alert_error">Der Code ist leider falsch. Hast du ihn richtig
+                  eingegeben?
+                </div>
+              {% endif %}
+              <div class="input-group">
+                <input type="text" placeholder="Code aus Einladung hier eingeben…"
+                       class="input input_big hochzeit_codeinput" name="code"/>
+                <input type="submit" value="Absenden" class="btn"/>
+              </div>
+            </form>
+          </div>
+          <p>
+            <small>Um die anderen Bereiche der Website zu sehen, kannst du dich hier mit deinem
+              persönlichen Code aus der Einladung einloggen:
+            </small>
+          </p>
+        </div>
+        <div class="spacer"></div>
+        <div>
+          <p>Falls du den Code nicht mehr hast, aber schonmal da warst, kannst du dich auch mit
+            deiner E-Mail-Adresse einloggen:</p>
+          <div class="form-group">
+            <form action="/email" method="post">
+              {% if error === 'wrong_email' %}
+                <div class="alert alert_error">Leider konnten wir dieser E-Mail-Adresse noch keinen
+                  Gast zuordnen. Beachte, dass du die Adresse einmal angegeben haben musst, damit
+                  der
+                  Login damit funktioniert.
+                </div>
+              {% endif %}
+              <div class="input-group">
+                <input type="text" placeholder="E-Mail (nur wenn schon registriert)…"
+                       class="input"
+                       name="email"/>
+                <input type="submit" value="Absenden" class="btn btn_small"/>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="bumper bumper_invert"></div>
+
+        <p>Auf unserer Hochzeitswebsite findet ihr alle Infos zur Location,
+          Übernachtungsmöglichkeiten und
+          dem Tagesablauf an unserer Hochzeit am DATUM. Wenn dir jetzt schon ein Lied einfällt,
+          das
+          auf gar keinen Fall auf der Party fehlen darf, schreibe es schon Mal auf unsere
+          Musikwunschliste.</p>
+        <p>Und das wichtigste: Nach der Hochzeit tauschen wir hier alle Bilder und Videos mit euch
+          aus.</p>
+      </div>
+
+    {% else %}
+    <div class="spacer spacer-big"></div>
+    <div class="spacer spacer-big"></div>
+
+      <div data-col="8-sm 6-md 4-lg">
+
+        <p>Auf unserer Hochzeitswebsite findet ihr alle Infos zur <a href="/location">Location,
+            Übernachtungs&shy;möglichkeiten</a>
+          und dem <a href="/ablauf">Tagesablauf</a> an unserer Hochzeit am DATUM<br>
+          Wenn dir jetzt schon ein Lied einfällt, das auf gar keinen Fall auf der Party fehlen darf,
+          schreibe es schon Mal auf unsere <a href="/musik">Musikwunschliste.</a></p>
+        <p>Und das wichtigste: Nach der Hochzeit tauschen wir hier alle Bilder und Videos mit euch
+          aus.</p>
+      </div>
+    {% endif %}
+
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  <div class="align-center has-padding-big">
+    <small><a href="/impressum">Impressum</a></small>
+  </div>
+{% endblock %}
